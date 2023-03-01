@@ -1,17 +1,17 @@
 <?php
     include 'header.php';
 ?>
-<!-- {{-- intro popup --}} -->
+<!-- intro popup  -->
 <div id="intro-modal" class="modal fade">
     <div class="modal-dialog modal-login">
         <div class="modal-content">
             <div class="modal-header">
-                <img src="{{ env('ASSETS_URL') }}/assets/img/intro-avatar-girl.png" class="avatar" alt="Avatar">
+                <img src="./assets/img/intro-avatar-girl.png" class="avatar" alt="Avatar">
                 <h4 class="modal-title">Welcome</h4>
 
             </div>
             <div class="modal-body">
-                <form action="/confirmation" method="post" id="entry-form">
+                <form action="/confirmation.php" method="post" id="entry-form">
                     <div class="form-group">
                         <input type="text" class="form-control" name="fname" placeholder="Full Name" required="required">
                     </div>
@@ -38,14 +38,14 @@
         Hello, Welcome! to the AI World
     </div>
 </div>
-<!-- {{-- intro popup end--}} -->
+<!-- intro popup end -->
 
-<!-- {{-- response waiting popup --}} -->
+<!-- response waiting popup  -->
 <div class="modal fade" id="loadMe" tabindex="-1" role="dialog" aria-labelledby="loadMeLabel">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-body text-center">
-                <div class="loader"><img src="{{ env('ASSETS_URL') }}/assets/img/loader.svg" alt="loader..."></div>
+                <div class="loader"><img src="./assets/img/loader.svg" alt="loader..."></div>
                 <div clas="loader-txt">
                     <p>Please wait while we are preparing response in your language. <br><br><small>If you love this, do leave a comment</small></p>
                 </div>
@@ -53,8 +53,8 @@
         </div>
     </div>
 </div>
-<!-- {{-- response waiting popup end --}} -->
-<!-- {{-- comment thanks popup --}} -->
+<!-- response waiting popup end  -->
+<!-- comment thanks popup  -->
 <!--Model Popup starts-->
 <div class="container">
     <div class="row">
@@ -69,7 +69,7 @@
                     <div class="modal-body">
 
                         <div class="thank-you-pop">
-                            <img src="{{ env('ASSETS_URL') }}/assets/img/greentick.gif" alt="">
+                            <img src="./assets/img/greentick.gif" alt="">
                             <h1>Thank You!</h1>
                             <p>Your submission is received and we will review your comment soon!</p>
                         </div>
@@ -82,16 +82,16 @@
     </div>
 </div>
 <!--Model Popup ends-->
-<!-- {{-- comment thanks popup end--}} -->
+<!-- comment thanks popup end -->
 
 <div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-12">
-            <!-- {{-- welcome message --}} -->
+            <!-- welcome message  -->
             <div class="message">
                 Hello Welcome, to the new world of AI. This tool is going to help you to use the chatGPT in your own language. Just enter your query in your own language we will give you result in the same language.You can also input your message in your language but need to choose the same first. Your result will be automatically translated to your selected language only.
             </div>
-            <!-- {{-- input and output --}} -->
+            <!-- input and output  -->
             <div class="main-content">
                 <div class="main_section">
                     <div class="container">
@@ -136,7 +136,7 @@
         <div class="col-12">
             <h1>Comments</h1>
             <p>If you have something to share please do not hesitate to leave a comment.It will be very helpful</p>
-            <!-- {{-- Comments section --}} -->
+            <!-- Comments section  -->
                 <div class="be-comment-block">
                     <form class="form-block" id="comment-form">
                         <div class="row">
@@ -223,8 +223,8 @@
                         </div>
                     </div>
                 </div>
-            <!-- {{-- save the data in db and show a thanks message --}} -->
-            <!-- {{-- username and email and comment and save button --}} -->
+            <!-- save the data in db and show a thanks message  -->
+            <!-- username and email and comment and save button  -->
 
         </div>
 
