@@ -31,10 +31,12 @@
                 if (data.response=="Success"){
                     $('#intro-modal').modal('hide');
                     //set cookies for not to ask for popup again for 30days
-                    const d = new Date();
-                    d.setTime(d.getTime() + (7*24*60*60*1000));
-                    let expires = "expires="+ d.toUTCString();
-                    document.cookie = "loggedin=1;"+expires;
+                    if(decodedCookie.search('loggedin')!=0){
+                        const d = new Date();
+                        d.setTime(d.getTime() + (7*24*60*60*1000));
+                        let expires = "expires="+ d.toUTCString();
+                        document.cookie = "loggedin=1;"+expires;
+                    }
                 }else {
                     console.log(data);
                 }

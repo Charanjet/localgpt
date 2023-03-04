@@ -1,5 +1,17 @@
 <?php
     include 'header.php';
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://lingva.ml/api/v1/languages');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json')); 
+        $response = curl_exec($ch);
+        $object = json_decode($response);
+
+        $langs = $object->languages;   
+        curl_close($ch);
+
 ?>
 <?php if($_COOKIE['loggedin']!=1){
     ?>
@@ -116,7 +128,8 @@
                                             <datalist id="langs-list">
                                                 <?php 
                                                     foreach($langs as $index => $code){
-                                                        echo '<option value="$langs[$index]->name" data-value="$langs[$index]->code">$langs[$index]->name</option>';
+                                                        echo '<option value="'.$langs[$index]->name.'" data-value="'.$langs[$index]->code.'">
+                                                        '.$langs[$index]->name.'</option>';
                                                     }                                                 
                                                 ?>
                                             </datalist>
