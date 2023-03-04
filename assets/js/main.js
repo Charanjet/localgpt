@@ -23,18 +23,18 @@
         var email = $('#entry-form input[name="email"]').val();
         var fname = $('#entry-form input[name="fname"]').val();
         $.ajax({
-            url: '/confirmation',
+            url: 'http://localhost/minitools/localgpt/confirmation.php',
             type: 'post',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
             data: {'email':email,'fname':fname},
             success: function (data) {
                 var data = JSON.parse(data);
                 if (data.response=="Success"){
                     $('#intro-modal').modal('hide');
                     //set cookies for not to ask for popup again for 30days
-
+                    const d = new Date();
+                    d.setTime(d.getTime() + (7*24*60*60*1000));
+                    let expires = "expires="+ d.toUTCString();
+                    document.cookie = "loggedin=1;"+expires;
                 }else {
                     console.log(data);
                 }
@@ -58,11 +58,8 @@
         });
         //ajax request to translation
         $.ajax({
-            url: '/translate',
+            url: 'http://localhost/minitools/localgpt/translate.php',
             type: 'post',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
             data: {'message':message,'inp-lang':input_lang_code},
             success: function (data) {
                 var data = JSON.parse(data);
@@ -82,11 +79,8 @@
         var comment = $('textarea[name="commenter-message"]').val();
 
         $.ajax({
-            url:"/comment",
+            url:"http://localhost/minitools/localgpt/comment.php",
             type:"POST",
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
             data:{name:name,email:email,comment:comment},
             success:function (data) {
                 if (data.code=="200"){

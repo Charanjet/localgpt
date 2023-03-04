@@ -1,6 +1,8 @@
 <?php
     include 'header.php';
 ?>
+<?php if($_COOKIE['loggedin']!=1){
+    ?>
 <!-- intro popup  -->
 <div id="intro-modal" class="modal fade">
     <div class="modal-dialog modal-login">
@@ -8,7 +10,6 @@
             <div class="modal-header">
                 <img src="./assets/img/intro-avatar-girl.png" class="avatar" alt="Avatar">
                 <h4 class="modal-title">Welcome</h4>
-
             </div>
             <div class="modal-body">
                 <form action="/confirmation.php" method="post" id="entry-form">
@@ -27,6 +28,7 @@
         </div>
     </div>
 </div>
+<?php } ?>
 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
         <img src="..." class="rounded me-2" alt="...">
