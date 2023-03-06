@@ -1,5 +1,6 @@
 <?php
     include 'header.php';
+    include './config.php';
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'https://lingva.ml/api/v1/languages');
@@ -176,29 +177,10 @@
                         </div>
                     </form>
                     <h1 class="comments-title">Comments (3)</h1>
-                    <div class="be-comment">
-                        <div class="be-img-comment">
-                            <a href="blog-detail-2.html">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
-                            </a>
-                        </div>
-                        <div class="be-comment-content">
-
-				<span class="be-comment-name">
-					<a href="blog-detail-2.html">Ravi Sah</a>
-					</span>
-                            <span class="be-comment-time">
-					<i class="fa fa-clock-o"></i>
-					May 27, 2015 at 3:14am
-				</span>
-
-                            <p class="be-comment-text">
-                                Pellentesque gravida tristique ultrices.
-                                Sed blandit varius mauris, vel volutpat urna hendrerit id.
-                                Curabitur rutrum dolor gravida turpis tristique efficitur.
-                            </p>
-                        </div>
-                    </div>
+                    <?php
+                        $comments = mysqli_query($con,"SELECT * from comments order by id");
+                        while($row = mysqli_fetch_assoc($comments)){
+                    ?>
                     <div class="be-comment">
                         <div class="be-img-comment">
                             <a href="blog-detail-2.html">
@@ -206,37 +188,21 @@
                             </a>
                         </div>
                         <div class="be-comment-content">
-			<span class="be-comment-name">
-				<a href="blog-detail-2.html">Phoenix, the Creative Studio</a>
-			</span>
-                            <span class="be-comment-time">
-				<i class="fa fa-clock-o"></i>
-				May 27, 2015 at 3:14am
-			</span>
+                            <span class="be-comment-name">
+                                <a href="blog-detail-2.html"><?= $row['name']; ?></a>
+                            </span>
+                                            <span class="be-comment-time">
+                                <i class="fa fa-clock-o"></i>
+                                <?= $row['created_at']; ?>
+                            </span>
                             <p class="be-comment-text">
-                                Nunc ornare sed dolor sed mattis. In scelerisque dui a arcu mattis, at maximus eros commodo. Cras magna nunc, cursus lobortis luctus at, sollicitudin vel neque. Duis eleifend lorem non ant. Proin ut ornare lectus, vel eleifend est. Fusce hendrerit dui in turpis tristique blandit.
+                            <?= $row['comment']; ?>
                             </p>
                         </div>
                     </div>
-                    <div class="be-comment">
-                        <div class="be-img-comment">
-                            <a href="blog-detail-2.html">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" class="be-ava-comment">
-                            </a>
-                        </div>
-                        <div class="be-comment-content">
-			<span class="be-comment-name">
-				<a href="blog-detail-2.html">Cüneyt ŞEN</a>
-			</span>
-                            <span class="be-comment-time">
-				<i class="fa fa-clock-o"></i>
-				May 27, 2015 at 3:14am
-			</span>
-                            <p class="be-comment-text">
-                                Cras magna nunc, cursus lobortis luctus at, sollicitudin vel neque. Duis eleifend lorem non ant
-                            </p>
-                        </div>
-                    </div>
+                    <?php
+                        }
+                    ?>
                 </div>
             <!-- save the data in db and show a thanks message  -->
             <!-- username and email and comment and save button  -->

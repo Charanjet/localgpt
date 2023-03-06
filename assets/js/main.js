@@ -88,6 +88,7 @@
                 if (data.code=="200"){
                     $('.success-popup').click();
                 }else{
+                    $('.thank-you-pop h1').html('OOPS!');
                     $('.thank-you-pop p').html('Something Went wrong with server! Please contact <h3 class="cupon-pop"><span><a href="mailto:info@websmash.in">info@websmash.in</a></span></h3>');
                     $('.success-popup').click();
                 }
