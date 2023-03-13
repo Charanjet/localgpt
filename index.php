@@ -124,7 +124,7 @@
                                     </div><!--chat_area-->
                                     <form action="/translate.php" class="message_form message_write" method="post" id="chat_form">
                                         <div class="input-group mb-3">
-                                            <label class="pr-3 mb-0" for="langs">Choose your language: </label>
+                                            <label class="pr-3 mb-0" for="langs">Choose Output language: </label>
                                             <input list="langs-list" id="langs" name="inp-lang">
                                             <datalist id="langs-list">
                                                 <?php 

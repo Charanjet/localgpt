@@ -1,5 +1,6 @@
 (function($){
     // Preloader Area
+    
 	$(window).on('load', function() {
 		$('.preloader').addClass('preloader-deactivate');
         //show intro popup on load
@@ -23,7 +24,7 @@
         var email = $('#entry-form input[name="email"]').val();
         var fname = $('#entry-form input[name="fname"]').val();
         $.ajax({
-            url: 'http://localhost/minitools/localgpt/confirmation.php',
+            url: baseUrl+'confirmation.php',
             type: 'post',
             data: {'email':email,'fname':fname},
             success: function (data) {
@@ -31,6 +32,7 @@
                 if (data.response=="Success"){
                     $('#intro-modal').modal('hide');
                     //set cookies for not to ask for popup again for 30days
+                    let decodedCookie = decodeURIComponent(document.cookie);
                     if(decodedCookie.search('loggedin')!=0){
                         const d = new Date();
                         d.setTime(d.getTime() + (7*24*60*60*1000));
@@ -60,7 +62,7 @@
         });
         //ajax request to translation
         $.ajax({
-            url: 'http://localhost/minitools/localgpt/translate.php',
+            url: baseUrl+'translate.php',
             type: 'post',
             data: {'message':message,'inp-lang':input_lang_code},
             success: function (data) {
@@ -81,7 +83,7 @@
         var comment = $('textarea[name="commenter-message"]').val();
 
         $.ajax({
-            url:"http://localhost/minitools/localgpt/comment.php",
+            url:baseUrl+"comment.php",
             type:"POST",
             data:{name:name,email:email,comment:comment},
             success:function (data) {
